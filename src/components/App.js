@@ -6,7 +6,7 @@ import NumericInput from 'react-numeric-input';
 
 class App extends Component {
   state = {
-    die: 3,
+    dice: 3,
     sides: 6,
     total: 0,
     rolls: [],
@@ -22,26 +22,26 @@ class App extends Component {
   }
 
   handleRollDice = () => {
-    const { total, rolls } = rollFudgeDice(this.state.die);
+    const { total, rolls } = rollFudgeDice(this.state.dice);
     this.setState({total, rolls});
   }
 
   handleRollFudgeDice = () => {
-    const { total, rolls } = rollD6(this.state.die, this.state.sides);
+    const { total, rolls } = rollD6(this.state.dice, this.state.sides);
     this.setState({total, rolls});
   }
 
   handleDieSelect = (e) => {
-    const die = e;
-    console.log(`Now rolling ${die} dice`);
-    this.setState({die});
+    const dice = e;
+    console.log(`Now rolling ${dice} dice`);
+    this.setState({dice});
   }
 
   handleSidesSelect = (e) => {
     const sides = e;
     if (sides === "F") {
-      const die = 4;
-      this.setState({die});
+      const dice = 4;
+      this.setState({dice});
     }
     this.setState({sides});
   }
@@ -57,7 +57,7 @@ class App extends Component {
         <NumericInput
           min={0}
           max={100}
-          value={this.state.die}
+          value={this.state.dice}
           style={{
             input: {
               width: 50,
@@ -88,7 +88,7 @@ class App extends Component {
           className="btn btn-primary"
           onClick={this.handleClick}
         >
-          Roll {this.state.die}d{this.state.sides}
+          Roll {this.state.dice}d{this.state.sides}
         </Button>
       </div>
     );
